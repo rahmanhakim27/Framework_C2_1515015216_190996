@@ -42,6 +42,8 @@
 							<span class="caret"></span></a>
 							<ul class="dropdown-menu" aria-labelledby="dLabel">
 								<li><a href="{{url('mahasiswa')}}">Data Mahasiswa</a></li>
+								<li class="divider"></li>
+								<li><a href="{{url('jadwal_matakuliah')}}">Jadwal Mahasiswa</a></li>
 							</ul>
 						</li>
 						<li class="dropdown active">
@@ -52,7 +54,7 @@
 									<a href="{{url('dosen')}}">Data Dosen</a>
 								</li>
 								<li class="divider"></li>
-								<li><a href="{{url('dosen_matakuliah')}}">Jadwal Dosen Mengajar</a></li>
+								<li><a href="{{url('dosenmatakuliah')}}">Jadwal Dosen Mengajar</a></li>
 							</ul>
 						</li>
 						<li class="dropdown active">
@@ -88,7 +90,7 @@
 		<nav class="navbar navbar-default navbar-fixed-bottom">
 		<footer class="container">
 			<!-- Please dont delete this -->
-			created by <a>rahman hakim</span></a>
+			created by <span></i>Rahman Hakim</span>
 			<!-- Please dont delete this-->
 		</footer>
 		</nav>
