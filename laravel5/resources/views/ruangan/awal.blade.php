@@ -2,44 +2,46 @@
 @section('container')
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<strong>Seluruh Data ruangan</strong>
-		<a href="{{url('ruangan/tambah')}}" class="btn btn-xs btn-primary pull-right">
-			<i class="fa fa-plus"></i>ruangan
-		</a>
-		<div class="clearfix"></div>
+		<strong>Seluruh Data Ruangan</strong>
+		<a href="{{url('ruangan/tambah') }}" class="btn btn-xs btn-primary pull-right">
+			<i class="fa fa-plus"></i>Ruangan</a>
+			<div class="clearfix"></div>
 	</div>
 	<table class="table">
 		<thead>
-			<tr>
-				<th>No.</th>
-				<th>Title</th>
-				<th>Aksi</th>
-			</tr>
-			</thead>
-			<tbody>
-				<?php $x=1; ?>
-				@foreach ($data as $ruangan)
+		<tr>
+			<th>no</th>
+			<th>id</th>
+			<th>title</th>
+					</tr>
+		</thead>
+		<tbody>
+			<?php $x=1;?>
+			@foreach ($data as $ruangan)
 				<tr>
-					<td>{{$x++}}</td>
-					<td>{{$ruangan->title or 'title kosong'}}</td>
-					<!-- <td>{{$ruangan->password or 'password kosong'}}</td> -->
+					<td>{{ $x++ }}</td>
+					<td>{{ $ruangan->id or 'id kosong'}}</td>
+					<td>{{ $ruangan->title or 'title kosong'}}</td>
 					<td>
 						<div class="btn-group" role="group">
-							<a href="{{url('ruangan/edit/'.$ruangan->id)}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="ubah">
-                   				<i class="fa fa-pencil"></i>
-               				</a>
-                 			<a href="{{url('ruangan/lihat/'.$ruangan->id)}}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat">
-                   				<i class="fa fa-eye"></i>
-               				</a>
-                 			<a href="{{url('ruangan/hapus/'.$ruangan->id)}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                   				<i class="fa fa-remove"></i>
-               				</a>
+							<a href="{{url('ruangan/edit/'.$ruangan->id)}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ubah">
+								<i class="fa fa-pencil"></i>
+							</a>
+
+							<a href="{{url('ruangan/'.$ruangan->id)}}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat">
+								<i class="fa fa-eye"></i>
+							</a>
+
+							<a href="{{url('ruangan/hapus/'.$ruangan->id)}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+								<i class="fa fa-premove"></i>
+							</a>
 						</div>
-					</td>
+
+						</td>
+						</tr>
+						@endforeach	
 				</tr>
-				@endforeach
-			</tbody>
-		
+		</tbody>
 	</table>
 </div>
 @stop

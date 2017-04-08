@@ -3,55 +3,50 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\pengguna;
-class PenggunaController extends Controller
+use Input;
+use Redirect;
+use informasi;
+
+class penggunacontroller extends Controller
 {
-	public function awal()
-	{
-		return view('pengguna.awal', ['data'=>Pengguna::all()]);
-	}
+    public function awal(){
+    	return view('pengguna.awal',['data'=>pengguna::all()]);
+    }
+    public function tambah(){
+    	return view('pengguna.tambah');
+    }
+    public function simpan(Request $input){
+    	$pengguna = new pengguna;
+    	$pengguna->username=$input->username;
+        $pengguna->password=$input->password;
+        $informasi = $pengguna->save() ? 'berhasil input' : 'gagal simpan';
+        return redirect('pengguna')->with(['informasi'=>$informasi]);
+    }
 
-	public function tambah()
-	{
-		return view('pengguna.tambah');
-	}
-	public function simpan(Request $input)
-	{
-		$pengguna = new pengguna();
-		$pengguna->username = $input->username;
-		$pengguna->password = $input->password;
-		$informasi = $pengguna->save()? 'Berhasil simpan data' : 'gagal simpan data';
+    public function edit($id){
+        $pengguna=pengguna::find($id);
+        return view('pengguna.edit')->with(array('pengguna'=>$pengguna));
+    }
+public function lihat($id){
+        $pengguna=pengguna::find($id);
+        return view('pengguna.lihat')->with(array('pengguna'=>$pengguna));
+    }
 
-		return redirect('pengguna')->with(['informasi'=>$informasi]);
-	}
+    public function update($id, Request $input){
+        $pengguna = pengguna::find($id);
+        $pengguna ->username=$input->username;
+        $pengguna ->password=$input->password;
+        $informasi = $pengguna->save()? 'berhasil update' : 'gagal ya';
 
-public function edit($id)
-{
-	$pengguna = Pengguna::find($id);
-	return view('pengguna.edit')->with(array('pengguna'=>$pengguna));
-}
+        return redirect('pengguna')-> with(['informasi'=>$informasi]);
+    }
+    public function hapus($id){
+        $pengguna = pengguna::find($id);
+        $informasi = $pengguna->delete() ? 'berhasil hapus data' : 'gagal hapus data';
+        return redirect('pengguna')->with(['informasi'=>$informasi]);
+    }
 
-public function lihat($id)
-{
-	$pengguna = Pengguna::find($id);
-	return view('pengguna.lihat')->with(array('pengguna'=>$pengguna));
-}
-
-public function update($id, Request $input)
-	{
-		$pengguna = Pengguna::find($id);
-		$pengguna->username = $input->username;
-		$pengguna->password = $input->password;
-		$informasi = $pengguna->save()? 'Berhasil simpan data' : 'gagal simpan data';
-		return redirect('pengguna')->with(['informasi'=>$informasi]);
-	}
-
-	public function hapus($id)
-	{
-		$pengguna = Pengguna::find($id);
-		$informasi = $pengguna->delete() ? "berhasil hapus data" : 'Gagal hapus data';
-		return redirect('pengguna')->with(['informasi'=>$informasi]);
-	}
-}
+    }
