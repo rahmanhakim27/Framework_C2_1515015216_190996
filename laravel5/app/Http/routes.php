@@ -18,6 +18,10 @@ Route::get('/public', function(){
 	return view('public');
 });
 
+Route::get('ujiHas','RelationshipRebornController@ujiHas');
+
+Route::get('ujiDoesntHave','RelationshipRebornController@ujiDoesntHave');
+
 Route::get('pengguna', 'PenggunaController@awal');
 Route::get('pengguna/tambah', 'PenggunaController@tambah');
 Route::get('pengguna/{pengguna}','PenggunaController@lihat');

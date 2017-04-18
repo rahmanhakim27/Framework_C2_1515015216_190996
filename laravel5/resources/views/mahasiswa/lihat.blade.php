@@ -10,7 +10,8 @@
 	
 	<table class="table">
 		<tr>
-			<td>Nama:</td>
+			<td>Nama</td>
+			<td>:</td>
 			<td>{{$mahasiswa->nama}}</td>
 		</tr>
 
