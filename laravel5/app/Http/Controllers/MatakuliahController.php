@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use App\Http\Requests\matakuliahRequest;
 use App\matakuliah;
 use Input;
 use Redirect;
@@ -17,7 +17,7 @@ class matakuliahcontroller extends Controller
     public function tambah(){
         return view('matakuliah.tambah');
     }
-    public function simpan(Request $input){
+    public function simpan(matakuliahRequest $input){
         $matakuliah = new matakuliah;
         $matakuliah->id=$input->id;
         $matakuliah->title=$input->title;
@@ -34,7 +34,7 @@ public function lihat($id){
         return view('matakuliah.lihat')->with(array('matakuliah'=>$matakuliah));
     }
 
-    public function update($id, Request $input){
+    public function update($id, matakuliahRequest $input){
         $matakuliah = matakuliah::find($id);
         $matakuliah ->id=$input->id;
         $matakuliah ->title=$input->title;
