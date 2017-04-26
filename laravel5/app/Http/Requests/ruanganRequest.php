@@ -1,32 +1,20 @@
 <?php
-
 namespace App\Http\Requests;
-
 use App\Http\Requests\Request;
 
-class ruanganRequest extends Request
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
+class RuanganRequest extends Request{
+	public function authorize(){
+		return true;
+	}
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        $validasi = [
-            'id'=>'required',
-            'title'=>'required'
-            ];
-        return $validasi ;
-    }
+
+public function rules()
+{
+	$validasi = ['id'=>'required',
+				  'title'=>'required'];
+
+if($this -> is('ruangan/tambah')){
+}
+return $validasi;
+}
 }

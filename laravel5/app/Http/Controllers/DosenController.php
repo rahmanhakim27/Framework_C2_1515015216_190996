@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\dosenRequest;
+use App\Http\Requests\DosenRequest;
 use App\dosen;
 use App\pengguna;
 use Input;
@@ -20,7 +20,7 @@ class dosencontroller extends Controller
     public function tambah(){
         return view('dosen.tambah');
     }
-    public function simpan(dosenRequest $input){
+    public function simpan(DosenRequest $input){
         $pengguna = new pengguna($input->only('username','password'));
         if ($pengguna->save()){
         $dosen = new dosen;
@@ -40,7 +40,7 @@ public function lihat($id){
         return view('dosen.lihat')->with(array('dosen'=>$dosen));
     }
 
-    public function update($id, dosenRequest $input){
+    public function update($id, DosenRequest $input){
         $dosen = dosen::find($id);
         $pengguna = $dosen->pengguna;
         $dosen ->nama=$input->nama;

@@ -1,38 +1,23 @@
 <?php
-
 namespace App\Http\Requests;
-
 use App\Http\Requests\Request;
 
-class dosenRequest extends Request
+class DosenRequest extends Request{
+	public function authorize(){
+		return true;
+	}
+
+
+public function rules()
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
+	$validasi = ['nama'=>'required',
+				  'nipp'=>'required',
+				  'alamat'=>'required',
+				  'username'=>'required'];
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-         $validasi = [
-            'nama'=>'required',
-            'nipp'=>'required|integer',
-            'alamat'=>'required',
-            'username'=>'required'
-            ];
-            if($this->is('mahasiswa/tambah')){
-                $validasi['password'] = 'required';
-            }
-        return $validasi;
-
-    }
+if($this -> is('dosen/tambah')){
+	$validasi['password'] = 'required';
+}
+return $validasi;
+}
 }

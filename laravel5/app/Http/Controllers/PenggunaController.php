@@ -21,9 +21,8 @@ class penggunacontroller extends Controller
     public function simpan(Request $input){
         $this->validate($input,[
             'username'=>'required',
-            'password'=>'required',
+            'password'=> 'required',
             ]);
-
     	$pengguna = new pengguna;
     	$pengguna->username=$input->username;
         $pengguna->password=$input->password;
